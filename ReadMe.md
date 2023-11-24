@@ -6,12 +6,14 @@
 - Single source of truth
 - Unidirectional Data Flow
 
+
 위 네 가지 개념을 바탕으로 프로그램 작성
 
 ### UILayer
 Compose
 
 <img src = "/screenshot/package.png" width="300px" />
+<img src = "/screenshot/report_ui.gif" width="300px" />
 
 UIState
 ```
@@ -33,3 +35,5 @@ class ReportViewModel @Inject constructor() : ViewModel()
     fun onRestrictAccount() {..} // 차단 요청
 }
 ```
+
+## Domain Layer
