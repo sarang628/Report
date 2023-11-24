@@ -37,3 +37,17 @@ class ReportViewModel @Inject constructor() : ViewModel()
 ```
 
 ## Domain Layer
+
+```
+interface ReportUseCase // 신고 usecase
+{
+    suspend fun invoke(reviewId: Int, reason: String)
+}
+```
+
+```
+interface BlockUserUseCase // 사용자 차단 usecase
+{
+    suspend fun invoke()
+}
+```

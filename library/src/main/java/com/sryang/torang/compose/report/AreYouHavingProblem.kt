@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sryang.torang.R
 
-@Preview
 @Composable
 fun AreYouHavingProblem(onRestrictAccount: () -> Unit)
 {
@@ -65,4 +64,11 @@ fun AreYouHavingProblem(onRestrictAccount: () -> Unit)
             Text(text = "Restrict account")
         }
     }
+}
+
+@Preview
+@Composable
+fun PreviewAreYouHavingProblem()
+{
+    AreYouHavingProblem {}
 }
