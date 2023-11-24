@@ -14,9 +14,9 @@ ext {
     buildToolsVersion = '30.0.3'
 
     //hilt
-    hiltVersion = '2.44'
-    room_version = "2.5.1"
+    hiltVersion = '2.46'
 
+    room_version = "2.5.1"
     roomVersion = '2.5.1'
     workVersion = '2.8.1'
 
