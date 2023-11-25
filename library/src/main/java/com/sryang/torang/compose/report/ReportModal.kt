@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReportModal(viewModel: ReportViewModel = hiltViewModel(), reviewId: Int)
+fun ReportModal(viewModel: ReportViewModel = hiltViewModel(), reviewId: Int, onReported: () -> Unit)
 {
     var sheetState = rememberModalBottomSheetState()
     val coroutine = rememberCoroutineScope()
@@ -43,7 +43,7 @@ fun ReportModal(viewModel: ReportViewModel = hiltViewModel(), reviewId: Int)
     })
 
     ModalBottomSheet(
-        onDismissRequest = { /*TODO*/ }, sheetState = sheetState
+        onDismissRequest = { onReported.invoke() }, sheetState = sheetState
     ) {
         Scaffold(snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
@@ -67,6 +67,7 @@ fun ReportModal(viewModel: ReportViewModel = hiltViewModel(), reviewId: Int)
                     if (viewModel.onRestrictAccount())
                     {
                         sheetState.hide()
+                        onReported.invoke()
                     }
                 }
             }, isLoading = uiState.isLoading

@@ -1,6 +1,8 @@
 package com.sryang.torang.usecases.report
 
+import com.sryang.torang.data.report.ReviewDTO
+
 interface LoadReviewUseCase
 {
-    fun invoke()
+    suspend fun invoke(id: Int): ReviewDTO
 }

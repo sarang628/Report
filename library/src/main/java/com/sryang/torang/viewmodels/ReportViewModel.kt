@@ -15,6 +15,7 @@ import javax.inject.Inject
 data class ReportUIState(val reviewId: Int? = null, /*신고할 리뷰 id*/
                          val userId: Int? = null, /* 사용자 ID */
                          val userName: Int? = null, /* 이름 */
+                         val profileUrl: String? = null, /* 프로필 */
                          val reason: String? = null, /* 신고 이유 */
                          val action: String? = null, /* 차단 여부 */
                          val error: String? = null, /* 에러 메세지 */
@@ -35,7 +36,7 @@ class ReportViewModel @Inject constructor(val reportUseCase: ReportUseCase, val 
     {
         try
         {
-            reportUseCase.invoke(reviewId = uiState.value.reviewId!!, reason = uiState.value.reason!!)
+            reportUseCase.invoke(reviewId = uiState.value.reviewId!!, reason = reason)
             _uiState.update { it.copy(reason = reason) }
             return true
         }
@@ -78,8 +79,8 @@ class ReportViewModel @Inject constructor(val reportUseCase: ReportUseCase, val 
             try
             {
                 _uiState.update { it.copy(isLoading = true) } //화면 가리기
-                loadReviewUseCase.invoke()
-                _uiState.update { it.copy(isLoading = false) }
+                val reviewDto = loadReviewUseCase.invoke(reviewId)
+                _uiState.update { it.copy(isLoading = false, reviewId = reviewId, userId = reviewDto.userId, profileUrl = reviewDto.profileUrl) }
             }
             catch (e: Exception)
             {
