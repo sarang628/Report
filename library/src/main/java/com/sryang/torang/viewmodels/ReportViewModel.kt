@@ -77,10 +77,9 @@ class ReportViewModel @Inject constructor(val reportUseCase: ReportUseCase, val 
         viewModelScope.launch {
             try
             {
-                _uiState.update { //화면 가리기
-                    it.copy(isLoading = true)
-                }
+                _uiState.update { it.copy(isLoading = true) } //화면 가리기
                 loadReviewUseCase.invoke()
+                _uiState.update { it.copy(isLoading = false) }
             }
             catch (e: Exception)
             {
