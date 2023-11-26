@@ -32,7 +32,7 @@ fun AreYouHavingProblem(onRestrictAccount: () -> Unit, name: String, profileUrl:
 {
     Column(
         Modifier
-            .height(550.dp)
+            .height(600.dp)
             .padding(start = 16.dp, end = 16.dp, bottom = 50.dp)
     ) {
         Column(
@@ -77,7 +77,6 @@ fun AreYouHavingProblem(onRestrictAccount: () -> Unit, name: String, profileUrl:
             }
         }
         Spacer(modifier = Modifier.weight(1f))
-
         Button(onClick = { onRestrictAccount.invoke() }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Restrict account")
         }

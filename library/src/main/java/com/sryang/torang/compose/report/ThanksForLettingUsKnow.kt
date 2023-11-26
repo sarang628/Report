@@ -27,7 +27,7 @@ fun ThanksForLettingUsKnow(onNext: () -> Unit)
 {
     Column(
         Modifier
-            .height(400.dp)
+            .height(450.dp)
             .padding(bottom = 50.dp)
     ) {
         Column(Modifier.padding(start = 40.dp, end = 40.dp)) {
