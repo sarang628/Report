@@ -16,9 +16,16 @@ Compose
 
 UIState
 ```
-data class ReportUIState(val reviewId: Int? = null, // 신고할 리뷰 id
-                         val reason: String? = null, // 신고 이유
-                         val action: String? = null) // 차단 여부
+data class ReportUIState(
+    val reviewId: Int? = null, /*신고할 리뷰 id*/
+    val userId: Int? = null, /* 사용자 ID */
+    val userName: String? = null, /* 이름 */
+    val profileUrl: String? = null, /* 프로필 */
+    val reason: String? = null, /* 신고 이유 */
+    val action: String? = null, /* 차단 여부 */
+    val error: String? = null, /* 에러 메세지 */
+    val isLoading: Boolean = false /* 화면 로딩 */
+)
 ```
 
 ViewModel
@@ -32,6 +39,8 @@ class ReportViewModel @Inject constructor() : ViewModel()
     fun setReason(reason: String) {..} // 이유 설정 + 신고처리 후 피드에서 삭제
     fun setAction(action: String) {..} // 차단 여부 설정
     fun onRestrictAccount() {..} // 차단 요청
+    fun clearErrorMessage() // 에러 메세지 초기화
+    fun loadReview(reviewId: Int) // 리뷰 정보 불러오기
 }
 ```
 
@@ -50,3 +59,13 @@ interface BlockUserUseCase // 사용자 차단 usecase
     suspend fun invoke()
 }
 ```
+
+```
+interface LoadReviewUseCase //리뷰 불러오기 usecase
+{
+    suspend fun invoke(id: Int): ReviewDTO
+}
+```
+
+## 시연
+<img src = "screenShot/report.gif" width = "300px" />

@@ -3,6 +3,7 @@ package com.sryang.torang.viewmodels
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sryang.torang.uistate.ReportUIState
 import com.sryang.torang.usecases.report.BlockUserUseCase
 import com.sryang.torang.usecases.report.LoadReviewUseCase
 import com.sryang.torang.usecases.report.ReportUseCase
@@ -12,17 +13,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-data class ReportUIState(
-    val reviewId: Int? = null, /*신고할 리뷰 id*/
-    val userId: Int? = null, /* 사용자 ID */
-    val userName: String? = null, /* 이름 */
-    val profileUrl: String? = null, /* 프로필 */
-    val reason: String? = null, /* 신고 이유 */
-    val action: String? = null, /* 차단 여부 */
-    val error: String? = null, /* 에러 메세지 */
-    val isLoading: Boolean = false /* 화면 로딩 */
-)
 
 @HiltViewModel
 class ReportViewModel @Inject constructor(
@@ -68,12 +58,12 @@ class ReportViewModel @Inject constructor(
         return false
     }
 
-    fun clearErrorMessage()
+    fun clearErrorMessage() // 에러 메세지 초기화
     {
         _uiState.update { it.copy(error = null) }
     }
 
-    fun loadReview(reviewId: Int)
+    fun loadReview(reviewId: Int) // 리뷰 정보 불러오기
     {
         viewModelScope.launch {
             try

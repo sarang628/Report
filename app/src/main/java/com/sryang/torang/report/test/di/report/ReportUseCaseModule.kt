@@ -1,6 +1,6 @@
 package com.sryang.torang.report.test.di.report
 
-import com.sryang.torang.data.report.ReviewDTO
+import com.sryang.torang.data.dto.ReviewDTO
 import com.sryang.torang.usecases.report.BlockUserUseCase
 import com.sryang.torang.usecases.report.LoadReviewUseCase
 import com.sryang.torang.usecases.report.ReportUseCase
@@ -16,7 +16,7 @@ import retrofit2.HttpException
 
 @InstallIn(SingletonComponent::class)
 @Module
-class ReportUsecaseModule
+class ReportUseCaseModule
 {
     @Provides
     fun providesBlockUserUseCase(): BlockUserUseCase
@@ -46,7 +46,7 @@ class ReportUsecaseModule
 
     @Provides
     fun providesLoadReviewUseCase(
-        reportRepository: ReportRepository, apiReview: ApiReview
+        apiReview: ApiReview
     ): LoadReviewUseCase
     {
         return object : LoadReviewUseCase

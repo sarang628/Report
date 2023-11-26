@@ -17,7 +17,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
-import com.sryang.torang.viewmodels.ReportUIState
+import com.sryang.torang.uistate.ReportUIState
 import com.sryang.torang.viewmodels.ReportViewModel
 import kotlinx.coroutines.launch
 
