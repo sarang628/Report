@@ -17,19 +17,25 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
+import com.sryang.torang.viewmodels.ReportUIState
 import com.sryang.torang.viewmodels.ReportViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReportModal(viewModel: ReportViewModel = hiltViewModel(), reviewId: Int, onReported: () -> Unit)
+fun ReportModal(
+    viewModel: ReportViewModel = hiltViewModel(),
+    reviewId: Int,
+    onReported: () -> Unit,
+    profileServerUrl: String
+)
 {
     var sheetState = rememberModalBottomSheetState()
     val coroutine = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     val navHost = rememberNavController()
 
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState: ReportUIState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(key1 = reviewId, block = {
         viewModel.loadReview(reviewId)
@@ -49,7 +55,7 @@ fun ReportModal(viewModel: ReportViewModel = hiltViewModel(), reviewId: Int, onR
             SnackbarHost(hostState = snackbarHostState)
         }) { padding ->
             Box(modifier = Modifier.padding(padding))
-            ReportNavHost(navHost = navHost, onReport = {
+            ReportNavHost(navHost = navHost, uiState = uiState, onReport = {
                 coroutine.launch {
                     if (viewModel.setReason(it))
                     {
@@ -70,7 +76,7 @@ fun ReportModal(viewModel: ReportViewModel = hiltViewModel(), reviewId: Int, onR
                         onReported.invoke()
                     }
                 }
-            }, isLoading = uiState.isLoading
+            }, isLoading = uiState.isLoading, profileServerUrl = profileServerUrl
             )
         }
     }

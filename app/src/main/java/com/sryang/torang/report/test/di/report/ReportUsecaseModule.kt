@@ -37,13 +37,17 @@ class ReportUsecaseModule
         {
             override suspend fun invoke(reviewId: Int, reason: String)
             {
-                reportRepository.sendReportReason(reviewId = reviewId, reportReason = ReportReason.ABUSE)
+                reportRepository.sendReportReason(
+                    reviewId = reviewId, reportReason = ReportReason.ABUSE
+                )
             }
         }
     }
 
     @Provides
-    fun providesLoadReviewUseCase(reportRepository: ReportRepository, apiReview: ApiReview): LoadReviewUseCase
+    fun providesLoadReviewUseCase(
+        reportRepository: ReportRepository, apiReview: ApiReview
+    ): LoadReviewUseCase
     {
         return object : LoadReviewUseCase
         {
@@ -53,10 +57,12 @@ class ReportUsecaseModule
                 {
                     val result = apiReview.getReviewsById(id)
                     return ReviewDTO(
-                        userId = result.user.userId, reviewId = result.reviewId, profileUrl = result.user.profilePicUrl
+                        userId = result.user.userId,
+                        reviewId = result.reviewId,
+                        profileUrl = result.user.profilePicUrl,
+                        userName = result.user.userName
                     )
-                }
-                catch (e: HttpException)
+                } catch (e: HttpException)
                 {
                     throw Exception(e.handle())
                 }

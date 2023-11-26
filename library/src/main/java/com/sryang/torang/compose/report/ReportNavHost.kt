@@ -6,6 +6,8 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,19 +17,29 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sryang.torang.viewmodels.ReportUIState
 import com.sryang.torang.viewmodels.ReportViewModel
 
 
 @Composable
-fun ReportNavHost(navHost: NavHostController, onReport: (String) -> Unit, onNext: () -> Unit, onBlock: () -> Unit, onBack: () -> Unit, onRestrictAccount: () -> Unit, isLoading: Boolean)
+fun ReportNavHost(
+    navHost: NavHostController,
+    uiState: ReportUIState,
+    onReport: (String) -> Unit,
+    onNext: () -> Unit,
+    onBlock: () -> Unit,
+    onBack: () -> Unit,
+    onRestrictAccount: () -> Unit,
+    isLoading: Boolean,
+    profileServerUrl: String
+)
 {
     if (isLoading)
     {
         Box(modifier = Modifier.fillMaxSize()) {
             CircularProgressIndicator(Modifier.align(Alignment.Center))
         }
-    }
-    else
+    } else
     {
         NavHost(navController = navHost, startDestination = "reason") {
             composable("reason") {
@@ -37,10 +49,16 @@ fun ReportNavHost(navHost: NavHostController, onReport: (String) -> Unit, onNext
                 ThanksForLettingUsKnow(onNext = onNext)
             }
             composable("supportActions") {
-                SupportActions(onBlock = onBlock, onBack = onBack)
+                SupportActions(
+                    onBlock = onBlock, onBack = onBack, userName = uiState.userName ?: ""
+                )
             }
             composable("areYouHavingProblem") {
-                AreYouHavingProblem(onRestrictAccount = onRestrictAccount)
+                AreYouHavingProblem(
+                    onRestrictAccount = onRestrictAccount,
+                    name = uiState.userName ?: "",
+                    profileUrl = if (uiState.profileUrl != null) profileServerUrl + uiState.profileUrl else ""
+                )
             }
         }
     }
@@ -51,7 +69,13 @@ fun ReportNavHost(navHost: NavHostController, onReport: (String) -> Unit, onNext
 @Composable
 fun PreviewReportNavHost()
 {
-    ModalBottomSheet(onDismissRequest = { /*TODO*/ }) {
-        ReportNavHost(onRestrictAccount = {}, onNext = {}, onBack = {}, onBlock = {}, onReport = {}, navHost = rememberNavController(), isLoading = false)
+    ModalBottomSheet(onDismissRequest = { /*TODO*/ }) {/*ReportNavHost(onRestrictAccount = {},
+            onNext = {},
+            onBack = {},
+            onBlock = {},
+            onReport = {},
+            navHost = rememberNavController(),
+            isLoading = false,
+        )*/
     }
 }

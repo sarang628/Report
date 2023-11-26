@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity()
                 review?.let {
                     ReportModal(reviewId = it, onReported = {
                         review = null
-                    })
+                    }, profileServerUrl = "http://sarang628.iptime.org:89/profile_images/")
                 }
             }
         }

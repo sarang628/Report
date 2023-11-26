@@ -32,14 +32,20 @@ fun ThanksForLettingUsKnow(onNext: () -> Unit)
     ) {
         Column(Modifier.padding(start = 40.dp, end = 40.dp)) {
             Column(
-                modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_check), contentDescription = "", alignment = Alignment.Center, modifier = Modifier.size(50.dp)
+                    painter = painterResource(id = R.drawable.ic_check),
+                    contentDescription = "",
+                    alignment = Alignment.Center,
+                    modifier = Modifier.size(50.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "Thanks for letting us know", fontSize = 18.sp, fontWeight = FontWeight.Bold
+                    text = "Thanks for letting us know",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(text = "We use these reports to:", color = Color.Gray)

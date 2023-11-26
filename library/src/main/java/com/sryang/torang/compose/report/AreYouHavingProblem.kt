@@ -9,21 +9,26 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.sryang.torang.R
 
 @Composable
-fun AreYouHavingProblem(onRestrictAccount: () -> Unit)
+fun AreYouHavingProblem(onRestrictAccount: () -> Unit, name: String, profileUrl: String)
 {
     Column(
         Modifier
@@ -35,10 +40,23 @@ fun AreYouHavingProblem(onRestrictAccount: () -> Unit)
         ) {
             Spacer(modifier = Modifier.height(40.dp))
             Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
-                Image(painter = painterResource(id = R.drawable.ic_check), contentDescription = "")
+                AsyncImage(
+                    model = profileUrl,
+                    contentDescription = "",
+                    modifier = Modifier
+                        .size(50.dp)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop
+                )
             }
             Spacer(modifier = Modifier.height(40.dp))
-            Text(text = "Are you having a problem\nwith beantownhoops?", Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            Text(
+                text = "Are you having a problem\nwith $name?",
+                Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold
+            )
             Spacer(modifier = Modifier.height(30.dp))
             Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
                 Image(painter = painterResource(id = R.drawable.ic_check), contentDescription = "")
@@ -70,5 +88,5 @@ fun AreYouHavingProblem(onRestrictAccount: () -> Unit)
 @Composable
 fun PreviewAreYouHavingProblem()
 {
-    AreYouHavingProblem {}
+    AreYouHavingProblem(name = "name", profileUrl = "profileUrl", onRestrictAccount = {})
 }

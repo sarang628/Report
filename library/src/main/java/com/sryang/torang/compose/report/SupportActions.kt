@@ -25,21 +25,32 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SupportActions(onBlock: () -> Unit, onBack: () -> Unit)
+fun SupportActions(onBlock: () -> Unit, onBack: () -> Unit, userName: String)
 {
     Scaffold(topBar = {
         CenterAlignedTopAppBar(title = { Text(text = "Support actions") }, navigationIcon = {
-            Icon(imageVector = Icons.Outlined.ArrowBack, contentDescription = "", modifier = Modifier.clickable {
-                onBack.invoke()
-            })
+            Icon(imageVector = Icons.Outlined.ArrowBack,
+                contentDescription = "",
+                modifier = Modifier.clickable {
+                    onBack.invoke()
+                })
         })
     }) { paddingValues ->
         Box(Modifier.padding(paddingValues)) {
             HorizontalDivider(color = Color.LightGray)
             Column {
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(text = "What else would you like to do?", fontSize = 18.sp, modifier = Modifier.padding(top = 16.dp, bottom = 8.dp, start = 16.dp))
-                Text(text = "We won't let them know if you take any of these actions.", modifier = Modifier.padding(top = 8.dp, bottom = 16.dp, start = 16.dp), color = Color.Gray, fontSize = 13.sp)
+                Text(
+                    text = "What else would you like to do?",
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(top = 16.dp, bottom = 8.dp, start = 16.dp)
+                )
+                Text(
+                    text = "We won't let them know if you take any of these actions.",
+                    modifier = Modifier.padding(top = 8.dp, bottom = 16.dp, start = 16.dp),
+                    color = Color.Gray,
+                    fontSize = 13.sp
+                )
                 HorizontalDivider(color = Color.LightGray)
                 Row(
                     Modifier
@@ -47,17 +58,26 @@ fun SupportActions(onBlock: () -> Unit, onBack: () -> Unit)
                         .clickable {
                             onBlock.invoke()
                         }) {
-                    Text(text = "Block beantownhoops", modifier = Modifier.padding(top = 16.dp, bottom = 16.dp, start = 16.dp))
+                    Text(
+                        text = "Block $userName",
+                        modifier = Modifier.padding(top = 16.dp, bottom = 16.dp, start = 16.dp)
+                    )
                 }
                 HorizontalDivider(color = Color.LightGray)
                 Row(
                     Modifier
                         .fillMaxWidth()
                         .clickable { onBlock.invoke() }) {
-                    Text(text = "Restrict beantownhoops", modifier = Modifier.padding(top = 16.dp, bottom = 16.dp, start = 16.dp))
+                    Text(
+                        text = "Restrict $userName",
+                        modifier = Modifier.padding(top = 16.dp, bottom = 16.dp, start = 16.dp)
+                    )
                 }
                 HorizontalDivider(color = Color.LightGray)
-                Text(text = "Learn more about Instagram's Community\nGuidelines", modifier = Modifier.padding(top = 16.dp, bottom = 16.dp, start = 16.dp))
+                Text(
+                    text = "Learn more about Instagram's Community\nGuidelines",
+                    modifier = Modifier.padding(top = 16.dp, bottom = 16.dp, start = 16.dp)
+                )
             }
         }
     }
@@ -67,5 +87,5 @@ fun SupportActions(onBlock: () -> Unit, onBack: () -> Unit)
 @Composable
 fun PreviewSupportActions()
 {
-    SupportActions(onBack = {}, onBlock = {})
+    SupportActions(onBack = {}, onBlock = {}, userName = "userName")
 }
