@@ -68,4 +68,4 @@ interface LoadReviewUseCase //리뷰 불러오기 usecase
 ```
 
 ## 시연
-<img src = "/screenShot/report.gif" width = "300px" />
+<img src = "/screenshot/report.gif" width = "300px" />
