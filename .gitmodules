@@ -1,3 +1,6 @@
 [submodule "app/src/main/java/com/sryang/torang/report/test/di/repository"]
 	path = app/src/main/java/com/sryang/torang/report/test/di/repository
 	url = https://github.com/sarang628/repository.git
+[submodule "app/src/main/java/com/sryang/torang/report/test/di/report_di"]
+	path = app/src/main/java/com/sryang/torang/report/test/di/report_di
+	url = https://github.com/sarang628/report_di.git
