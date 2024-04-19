@@ -6,8 +6,6 @@
 - Single source of truth
 - Unidirectional Data Flow
 
-위 네 가지 원리를 숙지하여 개발하기
-
 ### UILayer
 Compose
 
