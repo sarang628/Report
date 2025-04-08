@@ -1,4 +1,4 @@
-package com.sryang.torang.report.test
+package com.sarang.torang
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

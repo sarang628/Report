@@ -10,13 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
-        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
+        maven("https://jitpack.io")
     }
 }
 
 rootProject.name = "Report"
-include ':app'
-
-include ':library'
-project(':library').projectDir = new File('./library')
+include(":app")
+include(":library")

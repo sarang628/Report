@@ -1,4 +1,4 @@
-package com.sryang.torang.uistate
+package com.sarang.torang.uistate
 
 data class ReportUIState(
     val reviewId: Int? = null, /*신고할 리뷰 id*/

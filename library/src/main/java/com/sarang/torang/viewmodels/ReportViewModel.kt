@@ -1,12 +1,12 @@
-package com.sryang.torang.viewmodels
+package com.sarang.torang.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sryang.torang.uistate.ReportUIState
-import com.sryang.torang.usecases.report.BlockUserUseCase
-import com.sryang.torang.usecases.report.LoadReviewUseCase
-import com.sryang.torang.usecases.report.ReportUseCase
+import com.sarang.torang.uistate.ReportUIState
+import com.sarang.torang.usecases.report.BlockUserUseCase
+import com.sarang.torang.usecases.report.LoadReviewUseCase
+import com.sarang.torang.usecases.report.ReportUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

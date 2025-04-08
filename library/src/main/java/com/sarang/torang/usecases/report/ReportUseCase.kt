@@ -1,4 +1,4 @@
-package com.sryang.torang.usecases.report
+package com.sarang.torang.usecases.report
 
 interface ReportUseCase // 신고 usecase
 {

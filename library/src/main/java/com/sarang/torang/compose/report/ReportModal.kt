@@ -1,4 +1,4 @@
-package com.sryang.torang.compose.report
+package com.sarang.torang.compose.report
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -17,8 +17,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
-import com.sryang.torang.uistate.ReportUIState
-import com.sryang.torang.viewmodels.ReportViewModel
+import com.sarang.torang.uistate.ReportUIState
+import com.sarang.torang.viewmodels.ReportViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

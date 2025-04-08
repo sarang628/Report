@@ -1,4 +1,4 @@
-package com.sryang.torang.compose.report
+package com.sarang.torang.compose.report
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.sryang.torang.uistate.ReportUIState
+import com.sarang.torang.uistate.ReportUIState
 
 
 @Composable

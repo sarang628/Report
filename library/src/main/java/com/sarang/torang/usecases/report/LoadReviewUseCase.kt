@@ -1,6 +1,6 @@
-package com.sryang.torang.usecases.report
+package com.sarang.torang.usecases.report
 
-import com.sryang.torang.data.dto.ReviewDTO
+import com.sarang.torang.data.dto.ReviewDTO
 
 interface LoadReviewUseCase //리뷰 불러오기 usecase
 {

@@ -1,4 +1,4 @@
-package com.sryang.torang.compose.report
+package com.sarang.torang.compose.report
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sryang.torang.R
+import com.sarang.torang.R
 
 @Composable
 fun ThanksForLettingUsKnow(onNext: () -> Unit)

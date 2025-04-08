@@ -1,4 +1,4 @@
-package com.sryang.torang.compose.report
+package com.sarang.torang.compose.report
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
